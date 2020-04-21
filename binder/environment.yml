@@ -23,3 +23,6 @@ dependencies:
     - trackpy
     - tensorflow
     - tqdm
+    - torch 
+    - torchvision
+    - mrc

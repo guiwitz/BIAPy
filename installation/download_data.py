@@ -22,12 +22,37 @@ if not os.path.isfile(where_to_save+'myoblast.tif'):
 if not os.path.isfile(where_to_save+'neuron.tif'):
     url = 'https://cildata.crbs.ucsd.edu/media/images/809/809.tif'
     urllib.request.urlretrieve(url, where_to_save+'neuron.tif')
+    
+#import BBBC007
+if not os.path.isdir(where_to_save+'BBBC007_v1_images'):
+    url = 'https://data.broadinstitute.org/bbbc/BBBC007/BBBC007_v1_images.zip'
+    urllib.request.urlretrieve(url, where_to_save+'BBBC007_v1_images.zip')
+    #unzip
+    with zipfile.ZipFile(where_to_save+'BBBC007_v1_images.zip', 'r') as zip_ref:
+        zip_ref.extractall(where_to_save)
+    os.remove(where_to_save+'BBBC007_v1_images.zip')
 
-'''#import zebrafish embryo
+#import zebrafish embryo
 if not os.path.isdir(where_to_save+'30567'):
     os.makedirs(where_to_save+'30567')
     url = 'https://cildata.crbs.ucsd.edu/media/images/30567/30567.tif'  
     urllib.request.urlretrieve(url, where_to_save+'30567/30567.tif')
+    
+    
+#download lsm example
+if not os.path.isfile(where_to_save+'hsp-17 translational tail z-stack raw.lsm'):
+    myfile = requests.get('https://zenodo.org/record/3594412/files/hsp-17%20translational%20tail%20z-stack%20raw.lsm?download=1', allow_redirects=True)
+    open(where_to_save+'hsp-17 translational tail z-stack raw.lsm', 'wb').write(myfile.content)
+    
+#download mrc example
+if not os.path.isfile(where_to_save+'HeLa_H2B-PAGFP_01_12_R3D_D3D.dv'):
+    myfile = requests.get('https://zenodo.org/record/377035/files/HeLa_H2B-PAGFP_01_12_R3D_D3D.dv?download=1', allow_redirects=True)
+    open(where_to_save+'HeLa_H2B-PAGFP_01_12_R3D_D3D.dv', 'wb').write(myfile.content)
+    
+    
+    
+
+'''
 
 
 #import scifio wtembryo
@@ -50,14 +75,6 @@ if not os.path.isdir(where_to_save+'geography'):
         zip_ref.extractall(where_to_save+'geography')
     os.remove(where_to_save+'geography.zip')
 
-#import BBBC007
-if not os.path.isdir(where_to_save+'BBBC007_v1_images'):
-    url = 'https://data.broadinstitute.org/bbbc/BBBC007/BBBC007_v1_images.zip'
-    urllib.request.urlretrieve(url, where_to_save+'BBBC007_v1_images.zip')
-    #unzip
-    with zipfile.ZipFile(where_to_save+'BBBC007_v1_images.zip', 'r') as zip_ref:
-        zip_ref.extractall(where_to_save)
-    os.remove(where_to_save+'BBBC007_v1_images.zip')
 
 #import BBBC032
 if not os.path.isdir(where_to_save+'BBBC032_v1_dataset'):
