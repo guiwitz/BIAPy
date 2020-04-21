@@ -23,7 +23,7 @@ if not os.path.isfile(where_to_save+'neuron.tif'):
     url = 'https://cildata.crbs.ucsd.edu/media/images/809/809.tif'
     urllib.request.urlretrieve(url, where_to_save+'neuron.tif')
     
-#import BBBC007
+'''#import BBBC007
 if not os.path.isdir(where_to_save+'BBBC007_v1_images'):
     url = 'https://data.broadinstitute.org/bbbc/BBBC007/BBBC007_v1_images.zip'
     urllib.request.urlretrieve(url, where_to_save+'BBBC007_v1_images.zip')
@@ -48,7 +48,7 @@ if not os.path.isfile(where_to_save+'hsp-17 translational tail z-stack raw.lsm')
 if not os.path.isfile(where_to_save+'HeLa_H2B-PAGFP_01_12_R3D_D3D.dv'):
     myfile = requests.get('https://zenodo.org/record/377035/files/HeLa_H2B-PAGFP_01_12_R3D_D3D.dv?download=1', allow_redirects=True)
     open(where_to_save+'HeLa_H2B-PAGFP_01_12_R3D_D3D.dv', 'wb').write(myfile.content)
-    
+'''
     
     
 
