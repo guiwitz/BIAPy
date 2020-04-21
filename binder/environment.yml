@@ -2,7 +2,7 @@ name: biapy
 channels:
   - conda-forge
 dependencies:
-  - python=3.6
+  - python=3.7
   - numpy
   - matplotlib
   - scikit-image
@@ -26,3 +26,5 @@ dependencies:
     - torch 
     - torchvision
     - mrc
+    - stardist
+    - cellpose
