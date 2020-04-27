@@ -18,10 +18,11 @@ dependencies:
   - jupyter_contrib_nbextensions
   - ipympl
   - ipywidgets
+  - numba>=0.43.1
   - pip:
     - napari
     - trackpy
-    - tensorflow
+    - tensorflow==1.15
     - tqdm
     - torch 
     - torchvision
