@@ -28,6 +28,11 @@ if not os.path.isfile(where_to_save+'virus_EM.tif'):
     url = 'https://drive.google.com/uc?id=1wNjg6rihldcgR8_zRCGFYC8uLkxK1r9c'
     urllib.request.urlretrieve(url, where_to_save+'virus_EM.tif')
 
+#import heart substack
+if not os.path.isfile(where_to_save+'cxcr4aMO2_290112_substack.tif'):
+    url = 'https://drive.google.com/uc?id=16bnFocL1jorjSOh3Uk6X_b_5Y6G3GHqF'
+    urllib.request.urlretrieve(url, where_to_save+'cxcr4aMO2_290112_substack.tif')
+
 #import channels
 if not os.path.isdir(where_to_save+'channels'):
     os.makedirs(where_to_save+'channels')
@@ -36,7 +41,7 @@ if not os.path.isdir(where_to_save+'channels'):
     url = 'https://drive.google.com/uc?id=1OMBGdO3t_RvCIcmTLPX6zBfRiWt5KP3Z'
     urllib.request.urlretrieve(url, where_to_save+'channels/channels2.tif')
     
-#import myoblast
+#import nuclei image
 if not os.path.isfile(where_to_save+'Image6AltFinal.tif'):
     url = 'https://cildata.crbs.ucsd.edu/media/images/50658/50658.zip' 
     urllib.request.urlretrieve(url, where_to_save+'50658.zip')
@@ -44,7 +49,7 @@ if not os.path.isfile(where_to_save+'Image6AltFinal.tif'):
     with zipfile.ZipFile(where_to_save+'50658.zip', 'r') as zip_ref:
         zip_ref.extractall(where_to_save)
     
-'''#import BBBC007
+#import BBBC007
 if not os.path.isdir(where_to_save+'BBBC007_v1_images'):
     url = 'https://data.broadinstitute.org/bbbc/BBBC007/BBBC007_v1_images.zip'
     urllib.request.urlretrieve(url, where_to_save+'BBBC007_v1_images.zip')
@@ -59,7 +64,6 @@ if not os.path.isdir(where_to_save+'30567'):
     url = 'https://cildata.crbs.ucsd.edu/media/images/30567/30567.tif'  
     urllib.request.urlretrieve(url, where_to_save+'30567/30567.tif')
     
-    
 #download lsm example
 if not os.path.isfile(where_to_save+'hsp-17 translational tail z-stack raw.lsm'):
     myfile = requests.get('https://zenodo.org/record/3594412/files/hsp-17%20translational%20tail%20z-stack%20raw.lsm?download=1', allow_redirects=True)
@@ -69,13 +73,9 @@ if not os.path.isfile(where_to_save+'hsp-17 translational tail z-stack raw.lsm')
 if not os.path.isfile(where_to_save+'HeLa_H2B-PAGFP_01_12_R3D_D3D.dv'):
     myfile = requests.get('https://zenodo.org/record/377035/files/HeLa_H2B-PAGFP_01_12_R3D_D3D.dv?download=1', allow_redirects=True)
     open(where_to_save+'HeLa_H2B-PAGFP_01_12_R3D_D3D.dv', 'wb').write(myfile.content)
-'''
-    
-    
+
 
 '''
-
-
 #import scifio wtembryo
 if not os.path.isdir(where_to_save+'2chZT'):
     os.makedirs(where_to_save+'2chZT')
