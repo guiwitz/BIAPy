@@ -19,6 +19,8 @@ dependencies:
   - ipympl
   - ipywidgets
   - numba>=0.43.1
+  - pyimagej
+  - openjdk=8
   - pip:
     - napari
     - trackpy
