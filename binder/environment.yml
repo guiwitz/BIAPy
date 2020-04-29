@@ -29,3 +29,4 @@ dependencies:
     - mrc
     - stardist
     - cellpose
+    - aicsimageio
