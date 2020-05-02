@@ -38,3 +38,10 @@ def random_cmap():
     cmap.colors[-1,0] = 1
     cmap.colors[-1,1:3] = 0
     return cmap
+
+def myfun_in_script():
+    a = 2
+    print(f'final defintion: {a}')
+    
+def myfun_in_script2():
+    print(f'final defintion: {a}')
