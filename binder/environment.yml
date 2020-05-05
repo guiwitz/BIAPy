@@ -16,7 +16,7 @@ dependencies:
   - scikit-learn
   - rise
   - pyjnius=1.2.0
-  #- jupyter_contrib_nbextensions
+  - jupyter_contrib_nbextensions
   - ipympl
   - ipywidgets
   - numba>=0.43.1
