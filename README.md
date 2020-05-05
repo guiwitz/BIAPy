@@ -1,5 +1,5 @@
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/guiwitz/BIAPy/master)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/guiwitz/BIAPy)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/guiwitz/BIAPy/blob/colab)
 
 # BIAPy: *B*io*I*mage *A*nalysis with *Py*thon
 
@@ -17,22 +17,26 @@ This is the preferred solution. This repository has been set-up to be run intera
 
 ### On Colab
 
-Alternatively, you can run these notebooks via Google Colab. To do that, click on the Colab badge in the top left corner of this document. This will bring you to the Colab service where you will be able to select a notebook to open.
+Alternatively, you can run these notebooks via Google Colab. To do that, click on the Colab badge in the top left corner of this document. This will bring you to the Colab service where you will be able to select a notebook to open. Note that if you *directly download* the notebooks from GitHub, you should select the **colab** branch instead of master.
 
-The dataset cannot be "pre-installed" for you on Colab, so you will have to donwload it to Google Drive either directly using [this link](https://zenodo.org/record/3786307/files/Data.zip?download=1) or by visiting the [Zendo repository](https://zenodo.org/record/3786307/#.XrEx4tP7RTY) of the course.
+The dataset cannot be "pre-installed" for you on Colab, so you will have to download it to Google Drive either directly using [this link](https://zenodo.org/record/3786307/files/Data.zip?download=1) or by visiting the [Zendo repository](https://zenodo.org/record/3786307/#.XrEx4tP7RTY) of the course. Unzip the Data.zip file and **place the ```Data``` folder at the very top of your Google Drive folder tree**. The latter is important to ensure that image import commands in the notebooks work as expected.
 
-In order to access Google Drive from Colab, you will need to connect to it from each notebook. For that, execute the cell at the top of each notebook named ```#Colab install``` and follow instructions. The path to access the file is then different from the default used via Binder (see above). If you unzip the Data.zip folder at the top of your Google Drive folder structure, you will have access to data when replacing the import path ```../Data/``` by ```/content/drive/My Drive/Data``` every time it appears in the code e.g.:
-
-```python
-skimage.io.imread('../Data/neuron.tif)
-```
-should become
+In order to access Google Drive from Colab, you will need to connect to it from each notebook. For that, execute the following cell at the top of each notebook and follow instructions:
 
 ```python
-skimage.io.imread('/content/drive/My Drive/Data/neuron.tif)
+from google.colab import drive
+drive.mount('/content/drive')
 ```
 
-Finally, as it is not possible to permanently install additional packages in Colab, the necessary packages to run a notebook are also installed when executing the ```#Colab install``` cell.
+Finally, as it is not possible to permanently install additional packages in Colab, they are installed in each notebook via a ```pip``` command at the top of the notebook. Those cell will look like this (here aicsimageio and trackpy are installed):
+
+```bash
+%%bash
+wget https://raw.githubusercontent.com/guiwitz/BIAPy/master/course_functions.py
+pip install aicsimageio
+pip install trackpy
+```
+
 
 ### Local installation
 

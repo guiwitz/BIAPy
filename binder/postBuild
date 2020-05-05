@@ -3,8 +3,9 @@ python installation/download_data.py
 
 mkdir BIAPy
 mv *.ipynb BIAPy/
+mv course_functions.py BIAPy/
 
-git clone https://github.com/mpicbg-csbd/stardist.git
+#git clone https://github.com/mpicbg-csbd/stardist.git
 
 jupyter labextension install @jupyterlab/toc --no-build
 jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build

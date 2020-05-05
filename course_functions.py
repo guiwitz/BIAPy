@@ -2,9 +2,25 @@ import skimage.morphology
 import skimage.filters
 import numpy as np
 from skimage.measure import label, regionprops_table
+from skimage.feature import match_template, peak_local_max
+
 import matplotlib
 
 def detect_nuclei(image, size = 200):
+    """Detect nuclei in image using binary operations
+    
+    Parameters
+    ----------
+    image : 2D numpy array
+        image to be segmented
+    size: number  
+        maximal nucleus size
+        
+    Returns
+    -------
+    newimage : 2D numpy array
+        mask of nuclei
+    """
     
     # filtering
     image = skimage.filters.median(image,selem=np.ones((2,2)))
@@ -25,6 +41,57 @@ def detect_nuclei(image, size = 200):
             newimage[our_regions['coords'][x][:,0],our_regions['coords'][x][:,1]] = 1
             
     return newimage
+
+def detect_nuclei_template(image, template):
+    """Detect nuclei in image using template matching
+    
+    Parameters
+    ----------
+    image : 2D numpy array
+        image to be segmented
+    template: 2D numpy array  
+        template for nucleus shape
+        
+    Returns
+    -------
+    masked_peaks : 2D numpy array
+        mask where each nucleus is represented by a single white pixel
+    otsu_mask : maks obtained using the Otsu threshold
+    """
+    
+    matched = match_template(image=image, template=template, pad_input=True)
+
+    local_max = peak_local_max(matched, min_distance=10,indices=False)
+
+    otsu = skimage.filters.threshold_otsu(image)
+    otsu_mask = image > otsu
+    
+    otsu_mask = skimage.morphology.binary_dilation(otsu_mask, np.ones((5,5)))
+    masked_peaks = local_max*otsu_mask
+    
+    return masked_peaks, otsu_mask
+
+def create_disk_template(radius):
+    """Create a disk image
+    
+    Parameters
+    ----------
+    radius : int
+        radius of disk
+        
+    Returns
+    -------
+    template : 2D numpy array
+        binary image of a disk
+    """
+    
+    template = np.zeros((2*radius+5,2*radius+5))
+    center = [(template.shape[0]-1)/2,(template.shape[1]-1)/2]
+    Y, X = np.mgrid[0:template.shape[0],0:template.shape[1]]
+    dist_from_center = np.sqrt((X - center[0])**2 + (Y-center[1])**2)
+    template[dist_from_center<=radius] = 1
+    
+    return template
 
 def random_cmap():
     np.random.seed(42)
